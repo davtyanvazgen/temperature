@@ -1,7 +1,7 @@
 import React from "react";
+import Info from "./components/info.jsx";
 import Form from "./components/form.jsx";
 import Weather from "./components/weather.jsx";
-import "./App.css";
 
 const apiKEY = "e761b2bcc5025d319d9ee25a46e023cf";
 class App extends React.Component {
@@ -14,7 +14,7 @@ class App extends React.Component {
     error: undefined
   };
 
-  getCity = async e => {
+  gettingWeather = async e => {
     e.preventDefault();
     const city = e.target.elements.city.value;
 
@@ -25,20 +25,36 @@ class App extends React.Component {
       const data = await api_url.json();
       console.log(data);
 
+      let sunset = data.sys.sunset;
+      let dataSunset = new Date();
+      dataSunset.setTime(sunset);
+      let sunset_date = dataSunset.getHours() + ":" + dataSunset.getMinutes();
+
       this.setState({
         temp: data.main.temp,
         city: data.name,
         country: data.sys.country,
         pressure: data.main.pressure,
+        sunset: sunset_date,
         error: undefined
+      });
+    } else {
+      this.setState({
+        temp: undefined,
+        city: undefined,
+        country: undefined,
+        pressure: undefined,
+        sunset: undefined,
+        error: "vvedite nazvanie goroda"
       });
     }
   };
 
   render() {
     return (
-      <div className="main">
-        <Form weatherMethod={this.getCity} />
+      <div>
+        <Info />
+        <Form weatherMethod={this.gettingWeather} />
         <Weather data={this.state} />
       </div>
     );
