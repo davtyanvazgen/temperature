@@ -11,27 +11,36 @@ class App extends React.Component {
     country: undefined,
     pressure: undefined,
     sunset: undefined,
-    error: undefined
+    lost: undefined
   };
 
   getCity = async e => {
     e.preventDefault();
     const city = e.target.elements.city.value;
+    let err;
+    if (/\S/.test(city)) {
+      try {
+        const api_url = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKEY}&units=metric`
+        );
+        const data = await api_url.json();
+        console.log(data);
+        err = data;
 
-    if (city) {
-      const api_url = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKEY}&units=metric`
-      );
-      const data = await api_url.json();
-      console.log(data);
-
-      this.setState({
-        temp: data.main.temp,
-        city: data.name,
-        country: data.sys.country,
-        pressure: data.main.pressure,
-        error: undefined
-      });
+        this.setState({
+          temp: data.main.temp,
+          city: data.name,
+          country: data.sys.country,
+          pressure: data.main.pressure,
+          lost: undefined
+        });
+      } catch (error) {
+        console.log(error);
+        this.setState({
+          city: undefined,
+          lost: err
+        });
+      }
     }
   };
 
