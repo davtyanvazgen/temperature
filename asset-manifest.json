@@ -1,0 +1,13 @@
+{
+  "main.css": "/temperature/static/css/main.1d7b8450.chunk.css",
+  "main.js": "/temperature/static/js/main.3ca18b67.chunk.js",
+  "main.js.map": "/temperature/static/js/main.3ca18b67.chunk.js.map",
+  "static/js/1.cb9759c2.chunk.js": "/temperature/static/js/1.cb9759c2.chunk.js",
+  "static/js/1.cb9759c2.chunk.js.map": "/temperature/static/js/1.cb9759c2.chunk.js.map",
+  "runtime~main.js": "/temperature/static/js/runtime~main.8214f3c6.js",
+  "runtime~main.js.map": "/temperature/static/js/runtime~main.8214f3c6.js.map",
+  "static/css/main.1d7b8450.chunk.css.map": "/temperature/static/css/main.1d7b8450.chunk.css.map",
+  "index.html": "/temperature/index.html",
+  "precache-manifest.3f659157c4e24d4ee7242d5f73994516.js": "/temperature/precache-manifest.3f659157c4e24d4ee7242d5f73994516.js",
+  "service-worker.js": "/temperature/service-worker.js"
+}
